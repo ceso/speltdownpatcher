@@ -1,0 +1,31 @@
+--- ## (Leandro Lemos - 2018/01)
+
+- include_vars:
+    file: pckgsToUpdate.yaml
+
+- name: Running yum if the system is RHEL/CentOs
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rhelPkgs|default('*') }}"          
+  when: ansible_os_family == "RedHat"          
+  register: updateState
+
+# add the repository that contains the kernel update if it isn't present for debian-likes          
+- name: Adding ppa repository if the system is Debian-like         
+  apt_repository:
+    repo: 'ppa:canonical-kernel-team/pti'
+    state: present
+  when: ansible_os_family == "Debian"          
+
+# Update to the latest version of the kernel for debian-likes         
+- name: Runing apt if the system is Debian-like          
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recomends: no
+  with_items: "{{ debPkgs|default('*') }}"          
+  when: ansible_os_family == "Debian"          
+  register: updateState
+
+## eof          
