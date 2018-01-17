@@ -12,14 +12,14 @@
   when: (rebootServers == "yes" or rebootServers == "y" or "'withReboot' in group_names") and updateState.changed == "true"
   register: wasRebooted        
 
-- name: Generating report about if the server was rebooted under /tmp/serversRebootedState
+- name: Generating report about if the server was rebooted under "{{ pathRebootReport }}"
   local_action:
     module: lineinfile
     line: "The server {{ inventory_hostname }} was rebooted {{ wasRebooted.changed }}"
     state: present        
     insertafter: EOF        
     create: yes        
-    path: /tmp/serversRebootedState
+    path: "{{ pathRebootReport }}"
 
 - name: Running checks of vulnerabilities once more time
   include_role:
