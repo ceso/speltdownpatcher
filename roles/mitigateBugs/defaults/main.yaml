@@ -1,5 +1,6 @@
 --- ## (Leandro Lemos - 2018/01)
 
 rebootServers: no
+pathRebootReport: /tmp/serversRebootedState
 
 ## eof        
