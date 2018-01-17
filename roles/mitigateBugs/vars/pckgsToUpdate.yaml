@@ -1,0 +1,16 @@
+--- ## (Leandro Lemos - 2018/01)
+
+# List of the packages that will be updated in a RedHat-like
+rhelPkgs:
+- kernel
+- microcode_ctl
+#-
+#-
+# List of the packages that will be updated in a Debian-like
+#debPkgs:
+#-        
+#-  
+#-        
+#-  
+
+## eof
