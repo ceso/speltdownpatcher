@@ -9,7 +9,7 @@
 
 - name: Rebooting servers          
   include: rebootServers.yaml
-  when: (rebootServers == "yes" or rebootServers == "y" or "'withReboot' in group_names") and updateState.changed == "true"
+  when: inventory_hostname in groups['withReboot'] or rebootServers == "yes" or rebootServers == "y" and updateState.changed == "true"
   register: wasRebooted        
 
 - name: Generating report about if the server was rebooted under "{{ pathRebootReport }}"
