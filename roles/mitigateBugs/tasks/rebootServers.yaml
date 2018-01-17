@@ -1,5 +1,7 @@
 --- ## (Leandro Lemos - 2018/01)
 
+- tags: rebootServers
+
 - name: Rebooting servers
   command: /sbin/shutdown -r +1
   async: 0

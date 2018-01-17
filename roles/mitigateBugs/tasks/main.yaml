@@ -25,6 +25,6 @@
   include_role:
     name: checkVulnerability        
   vars:
-    postPatch: 1         
+    statVulnReport: 1         
 
 ## eof
