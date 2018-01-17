@@ -30,4 +30,12 @@ After that you just run the the playbook with:
 
 ansible-playbook -i hosts pb.yaml
 
+If you only want to check if the systems are vulnerable and generate a report of it, run the next:
+
+ansible-playbook -i hosts pb.yaml --tags=checkVuln --extra-vars "statVulnReport=1"
+
+Or just reboot the servers
+
+ansible-playbook -i hosts pb.yaml --tags=rebootServers
+
 And wait until it finish
